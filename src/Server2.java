@@ -6,7 +6,8 @@ public class Server2 {
 
   public static void main(String[] args) {
     try (ServerSocket serverSocket = new ServerSocket(SERVER_PORT);) {
-
+      InetAddress serverAddress = InetAddress.getLocalHost();
+      System.out.println("Server started on: " + serverAddress.getHostAddress());
       System.out.println("Server started. Listening on port " + SERVER_PORT + "...");
 
       while (true) {

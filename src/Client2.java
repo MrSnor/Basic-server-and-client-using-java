@@ -8,8 +8,11 @@ public class Client2 {
 
     public static void main(String[] args) {
         try {
-            Socket socket = new Socket(SERVER_IP, SERVER_PORT);
-            System.out.println("Connected to server.");
+            InetAddress routerAddress = InetAddress.getLocalHost();
+            System.out.println(routerAddress);
+            Socket socket = new Socket(routerAddress.getHostAddress(), SERVER_PORT);
+            InetAddress clientAddress = socket.getInetAddress();
+            System.out.println("Connected to server at: " + clientAddress.getHostAddress());
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
